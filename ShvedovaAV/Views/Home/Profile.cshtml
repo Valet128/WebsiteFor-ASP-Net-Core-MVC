@@ -1,0 +1,44 @@
+﻿@using System.Security.Claims
+@{
+    @model ShvedovaAV.Models.Product
+    ViewBag.Title = "Профиль";
+}
+
+@{
+var role = Context.User.FindFirst(ClaimsIdentity.DefaultRoleClaimType);
+ }
+@if(role != null)
+ {
+        if (role.Value == "admin")
+        {
+            <p>Профиль Администратора</p>
+               
+                <a asp-action="Products" asp-controller="Admin"><input type="button" value="Курсы"/></a>
+               <ul>  
+                <p>Пользователи</p>
+                    <li>Управление доступом пользователей к контенту</li>
+                    <li>Управление рассылкой</li>
+                <p>Рассылка</p>
+                <p>Сайт</p>
+                <p>Главная</p>
+                    <li>Добавить слайд</li>
+                    <li>Удалить слайд</li>
+                    <li>Изменить слайд</li>
+                    <li>Если есть реклама тоже самое</li>
+                    <li>Отзывы сами пользователи? через кабинет, через модерацию на одобрение(проверка был ли человек на курсе)</li>
+                
+         </ul>  
+
+        }
+        else
+        {
+            <p>Профиль</p>
+                <ul>
+                    <li>Данные пользователя</li>
+                    <li>Сменить пароль</li>
+                    <li>Доступный Контент</li>
+                </ul>
+        }
+ }
+
+

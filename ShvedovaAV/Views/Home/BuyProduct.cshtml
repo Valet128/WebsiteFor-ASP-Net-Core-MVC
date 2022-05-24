@@ -1,0 +1,8 @@
+﻿@model ShvedovaAV.Models.Product
+@{
+    ViewBag.Title = "Оформление заказа";
+}
+<input type="text" placeholder="@Model.Price" disabled/>
+<input type="text" placeholder="Имя" />
+<input type="text" placeholder="Почта" />
+<a asp-action="#"><input type="button"  value="Оплатить"/></a>
