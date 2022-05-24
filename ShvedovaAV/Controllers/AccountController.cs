@@ -74,7 +74,8 @@ namespace ShvedovaAV.Controllers
                 await HttpContext.SignInAsync(claimsPrincipal);
                 return RedirectToAction("Profile", "Home");
             }
-            return NotFound();
+            ViewData["Message"] = "Неправильный логин или пароль!";
+            return View(user);
         }
         public async Task<IActionResult> Logout()
         {

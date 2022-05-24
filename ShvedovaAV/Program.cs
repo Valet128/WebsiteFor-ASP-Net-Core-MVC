@@ -9,11 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/";
-        options.AccessDeniedPath = "/login";
-    });
+    .AddCookie();
+    
 builder.Services.AddAuthorization();
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
