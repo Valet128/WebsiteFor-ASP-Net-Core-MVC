@@ -8,7 +8,7 @@ using ShvedovaAV.ViewModels;
 using System.Security.Claims;
 
 namespace ShvedovaAV.Controllers
-{//test commit reverts
+{
     public class AccountController : Controller
     {
         ApplicationContext db;
