@@ -16,7 +16,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Css\" />
-    <Folder Include="wwwroot\Files\Images\" />
+    <Folder Include="wwwroot\Files\Images\Product\" />
+    <Folder Include="wwwroot\Files\Images\Slider\" />
+    <Folder Include="wwwroot\Files\Images\Feedback\" />
     <Folder Include="wwwroot\Jquery\" />
     <Folder Include="wwwroot\Js\" />
   </ItemGroup>

@@ -5,7 +5,7 @@
 
 <h2>Войти</h2>
 @ViewData["Message"]
-<form asp-action="login" method="post">
+<form asp-action="login" asp-controller="account" method="post">
     <p>
         <label asp-for="Email">Email</label><br />
         <input type="Email" asp-for="Email" />

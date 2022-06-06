@@ -21,19 +21,7 @@ app.UseStaticFiles();
 
 app.MapControllerRoute(
         name: "default",
-        pattern: "{action=Index}/{id?}",
-        defaults: new { controller ="Home"}
+        pattern: "{controller=Home}/{action=Index}/{id?}"
     );
-app.MapControllerRoute(
-        name: "account",
-        pattern: "{action}/{id?}",
-        defaults: new { controller = "Account" }
-    );
-app.MapControllerRoute(
-        name: "admin",
-        pattern: "{action}/{id?}",
-        defaults: new { controller = "Admin" }
-    );
-
 
 app.Run();

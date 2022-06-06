@@ -1,11 +1,11 @@
 ﻿@{
-    @model ShvedovaAV.ViewModels.AddProductViewModel
-    ViewBag.Title = "Добавление продукта";
+    @model ShvedovaAV.ViewModels.ProductViewModel
+    ViewBag.Title = "Редактирование продукта";
 }
 
-<h2>Добавление продукта</h2>
+<h2>Редактирование продукта</h2>
 
-<form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+<form asp-action="EditProduct" asp-controller="Product" method="post" asp-route-id="@Model.Id" enctype="multipart/form-data">
     <p>
         <label asp-for="Name">Имя</label><br />
         <input asp-for="Name" />
@@ -28,11 +28,14 @@
     </p>
     <p>
         <label asp-for="Image">Изображение</label><br />
-        <input asp-for="Image" type="file"/>
-         <span asp-validation-for="Image"></span>
+        <input asp-for="Image" type="hidden"/>
+        <img src="~/@Model.Image" width="240" height="130"/><br />
+        <label asp-for="ImageFile">Изменить изображение</label><br />
+        <input asp-for="ImageFile" type="file"/>
+         <span asp-validation-for="ImageFile"></span>
     </p>
     
     <p>
-        <input type="submit" value="Добавить" />
+        <input type="submit" value="Сохранить" />
     </p>
 </form>

@@ -11,59 +11,64 @@
     <script src="~/Js/bootstrap.bundle.min.js"></script>
     <title>@ViewBag.Title</title>
 </head>
+
 <body>
-    <div class="container-fluid">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="/" class="nav-link px-2 link-secondary">АШАШ ЛОГОТИП</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Навигационное меню</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-        <li><a href="/SendMail" class="nav-link px-2 link-dark">Отправить письмо</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
+    <header class="container py-3 mb-4 d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">
+            <ul class="nav flex-column flex-sm-row d-flex justify-content-center text-center">
+                <li><a href="/" class="nav-link px-2 link-dark">АШАШ ЛОГО</a></li>
+                <li><a href="#courses" class="nav-link px-2 link-dark">КУРСЫ</a></li>
+                <li><a href="#about" class="nav-link px-2 link-dark">О КОМПАНИИ</a></li>
+                <li><a href="#feedbacks" class="nav-link px-2 link-dark">ОТЗЫВЫ</a></li>
+                <li><h4 class="px-5 py-1">8-909-65-258-65</h4></li>
+                
                 @{
                 var user = Context.User.Identity;
                 }
                 @if (user is not null && user.IsAuthenticated)
                 {
-                     <a href="/profile"><button type="button" class="btn btn-outline-primary me-2">Профиль</button></a>
-                  <a href="/logout"><button type="button" class="btn btn-outline-primary me-2">Выйти</button></a>  
+                    <a asp-action="profile" asp-controller="home"><button type="button" class="btn btn-outline-primary me-2 my-2">Профиль</button></a>
+                    <a asp-action="logout" asp-controller="account"><button type="button" class="btn btn-outline-primary me-2 my-2">Выйти</button></a>  
 
                 }
                 else
                 {
-                    <a href="/login"><button type="button" class="btn btn-outline-primary me-2">Войти</button></a>
-                    <a href="/registration"><button type="button" class="btn btn-primary">Регистрация</button></a>
+                    <a asp-action="login" asp-controller="account"><button type="button" class="btn btn-outline-primary me-2 my-2">Войти</button></a>
+                    <a asp-action="registration" asp-controller="account"><button type="button" class="btn btn-primary my-2">Регистрация</button></a>
                 }
-      </div>
+                
+            </ul>
+
+           
+        </div>
     </header>
- </div>
+ 
    
         
     <div class="container">
         @RenderBody()
     </div>
     
-  <footer class="container">
-    <p class="col-md-4 mb-0 text-muted">АШАШ © @DateTime.Now.Year;</p>
-
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-    </a>
-
-    <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
+  <footer class="container py-3 mt-4 justify-content-center">
+     <div class="row justify-content-center">
+         <div class="d-flex col-12 col-md-4 justify-content-center">
+           <p>АШАШ © @DateTime.Now.Year</p>
+         </div>
+          <div class="d-flex col-12 col-md-4 justify-content-center">
+              <ul class="nav flex-column text-center">
+                 <li class="nav-item"><a href="Home/Accord" class="nav-link px-2 text-muted">Согласие с рассылкой</a></li>
+                 <li class="nav-item"><a href="Home/Confidence" class="nav-link px-2 text-muted">Политика конфиденциальности</a></li>
+                 <li class="nav-item"><a href="Home/Denial" class="nav-link px-2 text-muted">Отказ от ответсвенности</a></li>
+                 <li class="nav-item"><a href="Home/TermsOfUse" class="nav-link px-2 text-muted">Пользовательское соглашение</a></li>
+             </ul>
+         </div>
+       
+    
+         <div class="nav flex-column d-flex col-12 col-md-4 ">
+             <h4 class="nav-item text-center">8-909-65-258-65</h4>
+             <h4 class="nav-item text-center">info@shvedovaav.ru</h4>
+         </div>
+     </div>
   </footer>
   
 </body>

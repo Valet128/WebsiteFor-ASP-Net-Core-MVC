@@ -13,7 +13,9 @@ var role = Context.User.FindFirst(ClaimsIdentity.DefaultRoleClaimType);
         {
             <p>Профиль Администратора</p>
                
-                <a asp-action="Products" asp-controller="Admin"><input type="button" value="Курсы"/></a>
+                <a asp-action="Products" asp-controller="Product"><input type="button" value="Курсы"/></a>
+                <a asp-action="Sliders" asp-controller="Slider"><input type="button" value="Слайдеры"/></a>
+                <a asp-action="Feedbacks" asp-controller="Feedback"><input type="button" value="Отзывы"/></a>
                <ul>  
                 <p>Пользователи</p>
                     <li>Управление доступом пользователей к контенту</li>
@@ -21,11 +23,8 @@ var role = Context.User.FindFirst(ClaimsIdentity.DefaultRoleClaimType);
                 <p>Рассылка</p>
                 <p>Сайт</p>
                 <p>Главная</p>
-                    <li>Добавить слайд</li>
-                    <li>Удалить слайд</li>
-                    <li>Изменить слайд</li>
                     <li>Если есть реклама тоже самое</li>
-                    <li>Отзывы сами пользователи? через кабинет, через модерацию на одобрение(проверка был ли человек на курсе)</li>
+                  
                 
          </ul>  
 

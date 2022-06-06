@@ -1,5 +1,4 @@
 ﻿
-
 namespace ShvedovaAV.Models
 {
     public class User

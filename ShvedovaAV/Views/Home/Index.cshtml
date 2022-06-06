@@ -1,10 +1,18 @@
-﻿@model IEnumerable<ShvedovaAV.Models.Product>
+﻿@using ShvedovaAV.Models
+@using ShvedovaAV.ViewModels
+@model MainPageViewModel
 @{
     ViewBag.Title = "АШАШ";
+    List<Product> products = Model.Products;
+    List<Slider>  sliders = Model.Sliders;
+    List<Feedback>  feedbacks = Model.Feedbacks;
+    int count = 0;
 }
-
+    
   
 @*SLIDER*@
+<hr class="featurette-divider">
+  <div class="container">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
@@ -12,39 +20,43 @@
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="350px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+        
+            @foreach(var item in sliders)
+            {
+            if (count == 0)
+            {
+                <div class="carousel-item active">
+                    <image src="@item.Image" style="width:100%;height:350px" />
 
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="350px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>@item.Name</h1>
+                            <p>@item.Description</p>
+                            <p><a class="btn btn-primary" href="#">Ознакомиться</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                 <div class="carousel-item">
+                    <image src="@item.Image" style="width:100%;height:350px" />
 
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="350px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>@item.Name</h1>
+                            <p>@item.Description</p>
+                            <p><a class="btn btn-primary" href="#">Ознакомиться</a></p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
+            }
+            count = 1;
+        }
+          @*<div class="carousel-caption">  - положение кнопки по центру
+            <div class="carousel-caption text-end"> - положение кнопки справа
+          *@
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -55,53 +67,81 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
+  </div>
 @*PRODUCT_ITEMS*@
   
 
-   <div class="container">
-       <div class="row">
-    @foreach (var item in Model)
+   <div class="container py-5 id="courses"">
+       <div class="row gx-2">
+    @foreach (var item in products)
     {
        
-          <div class="col-lg-4">
+          <div class="col-4">
             <img src="@item.Image" width="140" height="140" style="border-radius:90px"/>
 
             <h2 class="fw-normal">@item.Name</h2>
-            <p>@item.Description</p>
-            <p><a class="btn btn-secondary" href="Product/@item.Id">Подробнее...</a></p>
+            <p style="min-height:100px;">@item.Description</p>
+            <p><a class="btn btn-secondary" href="Product/Product/@item.Id">Подробнее...</a></p>
      
-     </div>
+         </div>
     }
     </div> 
    </div> 
    
-        
-        
-       
-       
 
     @*DESCRIPTION*@
 
         <hr class="featurette-divider">
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-          </div>
-          <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        <div class="container" id="about">
+          <div class="col-7">
+            <h2 class="featurette-heading fw-normal lh-1">АШАШ <span class="text-muted">Описание сайта.</span></h2>
+            <p>Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта 
 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
+                Описание сайта Описание сайта Описание сайта Описание сайта 
+            </p>
+          </div>
+          <div class="col-5">
+              <image src="Files/Images/Description/description.jpg" style="width:100%;height:100%"/>
           </div>
         </div>
 
         <hr class="featurette-divider">
 
    
+@*PRODUCT_ITEMS*@
+  
 
+   <div class="container py-5" id="feedbacks">
+       <div class="row gx-2">
+    @foreach (var item in feedbacks)
+    {
+       
+          <div class="col-4">
+            <img src="@item.Image" width="140" height="140" style="border-radius:90px"/>
+
+            <h2 class="fw-normal">@item.Name</h2>
+            <p style="min-height:100px;">@item.Description</p>
+            <p><a class="btn btn-secondary" href="Product/Product/@item.Id">Подробнее...</a></p>
+     
+         </div>
+    }
+    </div> 
+   </div> 
    
-
+   <hr class="featurette-divider">
 
 
 

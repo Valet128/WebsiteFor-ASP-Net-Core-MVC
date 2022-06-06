@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ShvedovaAV.Models.Product>
 @{
-    ViewBag.Title = "Курсы";
+    ViewBag.Title = "Продукты";
 }
 
 <table class="table">
-     <tr><th>Имя</th><th>Описание</th><th>Цена</th><th>Категория</th><th>Картинка</th></tr>
+     <tr><th>Название</th><th>Описание</th><th>Цена</th><th>Категория</th><th>Картинка</th></tr>
     @foreach (var item in Model)
     {
         <tr>
@@ -12,7 +12,7 @@
             <td>@item.Description</td>
             <td>@item.Price</td>
             <td>@item.Category</td>
-            <td><img src="@item.Image" width="240" height="130"></img></td>
+            <td><img src="~/@item.Image" width="240" height="130"></img></td>
             <td><a asp-action="EditProduct" asp-route-id="@item.Id"><input type="button"  value="Редактировать"/></a></td>
             <td>
             <form asp-action="DeleteProduct" asp-route-id="@item.Id" method="post">
@@ -22,5 +22,5 @@
         </tr>
     }
 </table>
-<a asp-action="AddProduct"><input type="button"  value="Добавить"/></a>
+<a asp-action="AddProduct" asp-controller="Product"><input type="button"  value="Добавить"/></a>
 

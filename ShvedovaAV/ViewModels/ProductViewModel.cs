@@ -1,16 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShvedovaAV.Models
+namespace ShvedovaAV.ViewModels
 {
-    public class Product
+    public class ProductViewModel
     {
         public int Id { get; set; }
+        [Required]
         public string? Name { get; set; }
+        [Required]
         public string? Description { get; set; }
+        [Required]
         public int Price { get; set; }
+        [Required]
         public string? Category { get; set; }
         public string? Image { get; set; }
-        [NotMapped]
         public IFormFile? ImageFile { get; set; }
     }
 }

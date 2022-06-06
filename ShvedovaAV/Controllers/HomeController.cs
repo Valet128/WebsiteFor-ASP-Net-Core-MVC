@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ShvedovaAV.Models;
-using System.Drawing;
+﻿using ShvedovaAV.Models;
+using ShvedovaAV.Services;
+using ShvedovaAV.ViewModels;
 using System.Security.Claims;
 
 namespace ShvedovaAV.Properties.Controllers
@@ -14,10 +12,26 @@ namespace ShvedovaAV.Properties.Controllers
         {
             this.db = db;
         }
+
+        public async Task<IActionResult> SM()
+        {
+            EmailService emailService = new EmailService();
+            await emailService.SendEmailAsync("info@shvedovaav.ru", "Регистрация", "test");
+            return RedirectToAction("Index");
+        }
+
         public async Task<IActionResult> Index()
         {
-            return View(await db.Products.ToListAsync());
+            var products = await db.Products.ToListAsync();
+            var sliders = await db.Sliders.ToListAsync();
+            var feedbacks = await db.Feedbacks.ToListAsync();
+            var models = new MainPageViewModel()
+            {
+                Products = products, Sliders = sliders, Feedbacks = feedbacks
+            };
+            return View(models);
         }
+
         public IActionResult Product(int id)
         {
             if (id != 0)
@@ -27,6 +41,7 @@ namespace ShvedovaAV.Properties.Controllers
             }
             return NotFound();
         }
+
         public IActionResult Profile()
         {
             Claim? userId = HttpContext.User.FindFirst("ClaimId");
@@ -35,9 +50,25 @@ namespace ShvedovaAV.Properties.Controllers
                     return View();
             }
             return NotFound();
-            
         }
+
         public IActionResult Description()
+        {
+            return View();
+        }
+        public IActionResult Accord()
+        {
+            return View();
+        }
+        public IActionResult Denial()
+        {
+            return View();
+        }
+        public IActionResult Confidence()
+        {
+            return View();
+        }
+        public IActionResult TermsOfUse()
         {
             return View();
         }

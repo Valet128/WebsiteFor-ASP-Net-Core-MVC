@@ -1,11 +1,11 @@
 ﻿@{
-    @model ShvedovaAV.Models.Product
-    ViewBag.Title = "Редактирование продукта";
+    @model ShvedovaAV.ViewModels.SliderViewModel
+    ViewBag.Title = "Редактирование слайдера";
 }
 
-<h2>Добавление продукта</h2>
+<h2>Редактирование слайдера</h2>
 
-<form asp-action="EditProduct" method="post" asp-route-id="@Model.Id" enctype="multipart/form-data">
+<form asp-action="EditSlider" asp-controller="Slider" method="post" asp-route-id="@Model.Id" enctype="multipart/form-data">
     <p>
         <label asp-for="Name">Имя</label><br />
         <input asp-for="Name" />
@@ -21,12 +21,7 @@
         <input asp-for="Price" />
          <span asp-validation-for="Price"></span>
     </p>
-     <p>
-        <label asp-for="Category">Категория</label><br />
-        <input asp-for="Category" />
-         <span asp-validation-for="Category"></span>
-    </p>
-    <p>
+        <p>
         <label asp-for="Image">Изображение</label><br />
         <input asp-for="Image" type="hidden"/>
         <img src="~/@Model.Image" width="240" height="130"/><br />

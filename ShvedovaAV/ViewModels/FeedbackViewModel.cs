@@ -2,8 +2,9 @@
 
 namespace ShvedovaAV.ViewModels
 {
-    public class AddProductViewModel
+    public class FeedbackViewModel
     {
+        public int Id { get; set; }
         [Required]
         public string? Name { get; set; }
         [Required]
@@ -11,8 +12,7 @@ namespace ShvedovaAV.ViewModels
         [Required]
         public int Price { get; set; }
         [Required]
-        public string? Category { get; set; }
-        [Required]
-        public IFormFile? Image { get; set; }
+        public string? Image { get; set; }
+        public IFormFile? ImageFile { get; set; }
     }
 }
