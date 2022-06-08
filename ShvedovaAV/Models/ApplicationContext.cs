@@ -8,6 +8,8 @@ namespace ShvedovaAV.Models
         public DbSet<Slider> Sliders { get; set; } = null!;
         public DbSet<Feedback> Feedbacks { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
+        public DbSet<Content> Contents { get; set; } = null!;
+        public DbSet<ContentAccess> ContentAccesses { get; set; } = null!;
  
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base (options)

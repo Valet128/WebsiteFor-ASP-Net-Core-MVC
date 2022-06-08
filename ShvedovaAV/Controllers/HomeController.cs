@@ -13,12 +13,7 @@ namespace ShvedovaAV.Properties.Controllers
             this.db = db;
         }
 
-        public async Task<IActionResult> SM()
-        {
-            EmailService emailService = new EmailService();
-            await emailService.SendEmailAsync("info@shvedovaav.ru", "Регистрация", "test");
-            return RedirectToAction("Index");
-        }
+       
 
         public async Task<IActionResult> Index()
         {
@@ -69,6 +64,10 @@ namespace ShvedovaAV.Properties.Controllers
             return View();
         }
         public IActionResult TermsOfUse()
+        {
+            return View();
+        }
+        public IActionResult Test()
         {
             return View();
         }

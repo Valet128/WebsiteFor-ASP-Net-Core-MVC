@@ -1,0 +1,23 @@
+﻿@{
+    @model ShvedovaAV.ViewModels.ContentViewModel
+    ViewBag.Title = "Добавление контента";
+}
+
+<h2>Добавление контента</h2>
+
+<form asp-action="AddContent" asp-controller="Content" method="post" enctype="multipart/form-data">
+    <p>
+        <label asp-for="Name">Название</label><br />
+        <input asp-for="Name" />
+         <span asp-validation-for="Name"></span>
+    </p>
+    <p>
+        <label asp-for="VideoFile">Видео</label><br />
+        <input asp-for="VideoFile" type="file"/>
+         <span asp-validation-for="VideoFile"></span>
+    </p>
+    
+    <p>
+        <input type="submit" value="Добавить" />
+    </p>
+</form>

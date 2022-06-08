@@ -1,6 +1,5 @@
 ﻿@using System.Security.Claims
 @{
-    @model ShvedovaAV.Models.Product
     ViewBag.Title = "Профиль";
 }
 
@@ -16,17 +15,14 @@ var role = Context.User.FindFirst(ClaimsIdentity.DefaultRoleClaimType);
                 <a asp-action="Products" asp-controller="Product"><input type="button" value="Курсы"/></a>
                 <a asp-action="Sliders" asp-controller="Slider"><input type="button" value="Слайдеры"/></a>
                 <a asp-action="Feedbacks" asp-controller="Feedback"><input type="button" value="Отзывы"/></a>
+                <br/><br/>
+                
                <ul>  
                 <p>Пользователи</p>
-                    <li>Управление доступом пользователей к контенту</li>
+                    <li><a asp-action="Content" asp-controller="Content"><input type="button" value="Контент"/></a></li>
+                    <li><a asp-action="SendMail" asp-controller="Sending"><input type="button" value="Рассылка"/></a></li>
                     <li>Управление рассылкой</li>
-                <p>Рассылка</p>
-                <p>Сайт</p>
-                <p>Главная</p>
-                    <li>Если есть реклама тоже самое</li>
-                  
-                
-         </ul>  
+                </ul>  
 
         }
         else

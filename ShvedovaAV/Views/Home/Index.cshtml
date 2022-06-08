@@ -11,7 +11,7 @@
     
   
 @*SLIDER*@
-<hr class="featurette-divider">
+
   <div class="container">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -26,8 +26,8 @@
             if (count == 0)
             {
                 <div class="carousel-item active">
-                    <image src="@item.Image" style="width:100%;height:350px" />
-
+                    <image src="@item.Image" class="img-fluid" style="width:100%;height:auto" />
+                    
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h1>@item.Name</h1>
@@ -40,7 +40,7 @@
             else
             {
                  <div class="carousel-item">
-                    <image src="@item.Image" style="width:100%;height:350px" />
+                    <image src="@item.Image"  class="img-fluid" style="width:100%;height:auto" />
 
                     <div class="container">
                         <div class="carousel-caption text-start">
@@ -71,12 +71,12 @@
 @*PRODUCT_ITEMS*@
   
 
-   <div class="container py-5 id="courses"">
-       <div class="row gx-2">
+   <div class="container py-5" id="courses">
+       <div class="row gx-2 d-flex justify-content-center text-center">
     @foreach (var item in products)
     {
        
-          <div class="col-4">
+          <div class="col-12 col-md-4">
             <img src="@item.Image" width="140" height="140" style="border-radius:90px"/>
 
             <h2 class="fw-normal">@item.Name</h2>
@@ -94,7 +94,8 @@
         <hr class="featurette-divider">
 
         <div class="container" id="about">
-          <div class="col-7">
+            <div class="row d-flex justify-content-center text-center">
+          <div class="col-12 col-md-7">
             <h2 class="featurette-heading fw-normal lh-1">АШАШ <span class="text-muted">Описание сайта.</span></h2>
             <p>Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
                 Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
@@ -113,10 +114,11 @@
                 Описание сайта Описание сайта Описание сайта Описание сайта 
             </p>
           </div>
-          <div class="col-5">
-              <image src="Files/Images/Description/description.jpg" style="width:100%;height:100%"/>
+                <div class="col-12 col-md-5" >
+                <image src="Files/Images/Description/description.jpg" class="img-fluid" style="height:auto;width:500px"/>
+                </div>
           </div>
-        </div>
+          </div>
 
         <hr class="featurette-divider">
 
@@ -125,11 +127,11 @@
   
 
    <div class="container py-5" id="feedbacks">
-       <div class="row gx-2">
+       <div class="row gx-2 d-flex justify-content-center text-center">
     @foreach (var item in feedbacks)
     {
        
-          <div class="col-4">
+          <div class="col-12 col-md-4">
             <img src="@item.Image" width="140" height="140" style="border-radius:90px"/>
 
             <h2 class="fw-normal">@item.Name</h2>
@@ -141,7 +143,7 @@
     </div> 
    </div> 
    
-   <hr class="featurette-divider">
+ 
 
 
 

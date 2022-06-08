@@ -1,0 +1,44 @@
+﻿@using ShvedovaAV.Models
+@using ShvedovaAV.ViewModels
+@model AccessViewModel
+@{
+    ViewBag.Title = "Контент";
+    
+    var users = Model.Users;
+    var contentAccesses = Model.ContentAccesses;
+}
+
+<table class="table">
+     <tr><th>Имя</th><th>Почта</th><th>Телефон</th><th>Доступ</th></tr>
+    @foreach (var user in users)
+    {
+        int access = 0;
+        <tr>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+            <td>@user.Phone</td>
+            <td>@foreach (var content in contentAccesses)
+                {
+                    if (content.ContentId == ViewBag.Id && content.UserId == user.Id)
+                    {   
+                        access = 1;
+                        break;
+                    }
+                }
+                @if (access == 0)
+                {
+                    <form asp-action="AccessContent" asp-route-id="@user.Id" method="post">
+                        <input type="hidden" name="contentId" value="@ViewBag.Id"/>
+                        <input type="submit"  value="Открыть доступ"/>
+                    </form>
+                }
+                else
+                {
+                    <p>Доступ получен</p>
+                }
+            </td>
+        </tr>
+    }
+</table>
+<div>@ViewBag.Message</div>
+

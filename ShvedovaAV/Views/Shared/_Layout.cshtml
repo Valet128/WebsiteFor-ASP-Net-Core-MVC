@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header class="container py-3 mb-4 d-flex justify-content-center">
+    <header class="container pt-3 d-flex justify-content-center">
         <div class="row d-flex justify-content-center">
             <ul class="nav flex-column flex-sm-row d-flex justify-content-center text-center">
                 <li><a href="/" class="nav-link px-2 link-dark">АШАШ ЛОГО</a></li>
@@ -29,7 +29,6 @@
                 {
                     <a asp-action="profile" asp-controller="home"><button type="button" class="btn btn-outline-primary me-2 my-2">Профиль</button></a>
                     <a asp-action="logout" asp-controller="account"><button type="button" class="btn btn-outline-primary me-2 my-2">Выйти</button></a>  
-
                 }
                 else
                 {
@@ -39,27 +38,29 @@
                 
             </ul>
 
-           
+          
         </div>
+         
     </header>
- 
-   
+    <div class="container"><hr class="featurette-divider"></div>
+    
         
     <div class="container">
         @RenderBody()
     </div>
     
   <footer class="container py-3 mt-4 justify-content-center">
+      <hr class="featurette-divider">
      <div class="row justify-content-center">
          <div class="d-flex col-12 col-md-4 justify-content-center">
            <p>АШАШ © @DateTime.Now.Year</p>
          </div>
           <div class="d-flex col-12 col-md-4 justify-content-center">
               <ul class="nav flex-column text-center">
-                 <li class="nav-item"><a href="Home/Accord" class="nav-link px-2 text-muted">Согласие с рассылкой</a></li>
-                 <li class="nav-item"><a href="Home/Confidence" class="nav-link px-2 text-muted">Политика конфиденциальности</a></li>
-                 <li class="nav-item"><a href="Home/Denial" class="nav-link px-2 text-muted">Отказ от ответсвенности</a></li>
-                 <li class="nav-item"><a href="Home/TermsOfUse" class="nav-link px-2 text-muted">Пользовательское соглашение</a></li>
+                 <li class="nav-item"><a href="~/Home/Accord" class="nav-link px-2 text-muted">Согласие с рассылкой</a></li>
+                 <li class="nav-item"><a href="~/Home/Confidence" class="nav-link px-2 text-muted">Политика конфиденциальности</a></li>
+                 <li class="nav-item"><a href="~/Home/Denial" class="nav-link px-2 text-muted">Отказ от ответсвенности</a></li>
+                 <li class="nav-item"><a href="~/Home/TermsOfUse" class="nav-link px-2 text-muted">Пользовательское соглашение</a></li>
              </ul>
          </div>
        

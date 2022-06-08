@@ -28,8 +28,14 @@ namespace ShvedovaAV.Controllers
             EmailService emailService = new EmailService();
             if (ModelState.IsValid)
             {
-                User user = new User { Name = model.Name, Email = model.Email, Password = model.Password };
+                User user = new User { 
+                    Name = model.Name,
+                    Email = model.Email,
+                    Phone = "",
+                    Password = model.Password
+                };
                 user.Role = new Role { Name = "user"};
+                
                 db.Users.Add(user);
                 db.Roles.Add(user.Role);
                 await db.SaveChangesAsync();

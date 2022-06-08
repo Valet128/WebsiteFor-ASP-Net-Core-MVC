@@ -2,9 +2,10 @@
     @model ShvedovaAV.Models.User
     ViewBag.Title = "Авторизация";
 }
-
+<div class="container text-center">
 <h2>Войти</h2>
 @ViewData["Message"]
+
 <form asp-action="login" asp-controller="account" method="post">
     <p>
         <label asp-for="Email">Email</label><br />
@@ -18,3 +19,4 @@
         <input type="submit" value="Войти" />
     </p>
 </form>
+</div>

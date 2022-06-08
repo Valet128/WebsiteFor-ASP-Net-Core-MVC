@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Рассылка";
+}
+ <div class="container">
+        <form asp-action="SendMail" asp-controller="Sending" method="post" encode="text/plain">
+     <p>
+         <label for="title">Тема</label><br />
+        <input type="text" name="title" style="width:500px"/>
+    </p>
+    <p>
+         <label for="message">Текст письма</label><br />
+        <textarea name="message" style="height:300px;width:500px"></textarea>
+    </p>
+    <div>@ViewBag.Message</div>
+    <p>
+        <input type="submit" value="Отправить"/>
+    </p>
+        </form>
+    </div>
