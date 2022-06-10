@@ -34,14 +34,14 @@ namespace ShvedovaAV.Controllers
                     Phone = "",
                     Password = model.Password
                 };
-                user.Role = new Role { Name = "user"};
-                
+                await db.Roles.ToListAsync();
                 db.Users.Add(user);
-                db.Roles.Add(user.Role);
                 await db.SaveChangesAsync();
                 var claims = new List<Claim>
                 {
                     new Claim("ClaimId", user.Id.ToString()),
+                    new Claim("ClaimName", user.Name),
+                    new Claim("ClaimPhone", user.Phone),
                     new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
                     new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Name)
                 };
@@ -60,18 +60,19 @@ namespace ShvedovaAV.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(User user)
+        public async Task<IActionResult> Login(User model)
         {
-            User? logUser = db.Users.FirstOrDefault(u => u.Email == user.Email && u.Password == user.Password);
-            if (logUser != null)
+            User? user = db.Users.Include(r=> r.Role).FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+            if (user != null)
             {
-                var role = db.Users.Include(r => r.Role);
-                var userRole = role.FirstOrDefault(r => r.Id == logUser.Id);
+                
                 var claims = new List<Claim>
                 {
-                    new Claim("ClaimId", logUser.Id.ToString()),
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, logUser.Email),
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, userRole.Role.Name)
+                    new Claim("ClaimId", user.Id.ToString()),
+                    new Claim("ClaimName", user.Name),
+                    new Claim("ClaimPhone", user.Phone),
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Name)
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
@@ -79,7 +80,7 @@ namespace ShvedovaAV.Controllers
                 return RedirectToAction("Profile", "Home");
             }
             ViewData["Message"] = "Неправильный логин или пароль!";
-            return View(user);
+            return View(model);
         }
         public async Task<IActionResult> Logout()
         {

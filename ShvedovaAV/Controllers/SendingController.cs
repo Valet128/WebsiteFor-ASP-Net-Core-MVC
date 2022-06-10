@@ -3,7 +3,7 @@ using ShvedovaAV.Services;
 
 namespace ShvedovaAV.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class SendingController : Controller
     {
         private readonly ApplicationContext db;

@@ -3,7 +3,7 @@ using ShvedovaAV.ViewModels;
 
 namespace ShvedovaAV.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class FeedbackController : Controller
     {
         private readonly ApplicationContext db;

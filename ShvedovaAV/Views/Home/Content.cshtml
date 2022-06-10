@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ShvedovaAV.Models.ContentAccess>
+@{
+    ViewBag.Title = "Контент";
+}
+
+<table class="table">
+     <tr><th>Название</th><th>Контент</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Content.Name</td>
+            <td><video width="480" height="260" controls>
+                <source src="~/@item.Content.Source" type="video/mp4">
+                <source src="~/@item.Content.Source" type="video/mpeg">
+                <source src="~/@item.Content.Source" type="video/ogg">
+            </video></td>
+            
+        </tr>
+    }
+</table>
+
+

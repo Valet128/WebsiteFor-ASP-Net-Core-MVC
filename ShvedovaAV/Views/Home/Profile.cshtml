@@ -1,38 +1,49 @@
 ﻿@using System.Security.Claims
+@using ShvedovaAV.Models
+@model User
 @{
     ViewBag.Title = "Профиль";
 }
 
 @{
-var role = Context.User.FindFirst(ClaimsIdentity.DefaultRoleClaimType);
- }
+    var role = Context.User.FindFirst(ClaimsIdentity.DefaultRoleClaimType).Value;
+    var name = Context.User.FindFirst("ClaimName").Value;
+    var id = Context.User.FindFirst("ClaimId").Value;
+    var phone = Context.User.FindFirst("ClaimPhone").Value;
+    if (phone == "") phone = "Не указан";
+}
 @if(role != null)
  {
-        if (role.Value == "admin")
+        if (role == "Admin")
         {
-            <p>Профиль Администратора</p>
+            <h5>Администратор @name</h5>
                
                 <a asp-action="Products" asp-controller="Product"><input type="button" value="Курсы"/></a>
                 <a asp-action="Sliders" asp-controller="Slider"><input type="button" value="Слайдеры"/></a>
                 <a asp-action="Feedbacks" asp-controller="Feedback"><input type="button" value="Отзывы"/></a>
-                <br/><br/>
+                <br/> <br/>
                 
                <ul>  
                 <p>Пользователи</p>
-                    <li><a asp-action="Content" asp-controller="Content"><input type="button" value="Контент"/></a></li>
+                    <li><a asp-action="Content" asp-controller="Content"><input type="button" value="Контент"/></a></li><br/>
                     <li><a asp-action="SendMail" asp-controller="Sending"><input type="button" value="Рассылка"/></a></li>
-                    <li>Управление рассылкой</li>
                 </ul>  
 
         }
         else
         {
-            <p>Профиль</p>
-                <ul>
-                    <li>Данные пользователя</li>
-                    <li>Сменить пароль</li>
-                    <li>Доступный Контент</li>
-                </ul>
+            <h5>@name</h5>
+                <div class="row">Ваш телефон: @phone </div>
+                <div class="row">
+                <a asp-action="Content" asp-controller="Home" asp-route-id="@id">
+                <input type="button" value="Доступный видеоматериал"/>
+                </a>    
+                </div>
+                <div class="row">
+                <a>
+                <input type="button" value="Настройки"/>
+                </a>
+                </div>
         }
  }
 

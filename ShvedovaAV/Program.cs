@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.AspNetCore.Http.Features;
+using ShvedovaAV.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 /*builder.Services.Configure<IISServerOptions>(options => 
 {
     options.MaxRequestBodySize = int.MaxValue;
 });*/
+builder.Services.AddSingleton<CountService>();
 builder.Services.Configure<KestrelServerOptions>(options =>
 {
     options.Limits.MaxRequestBodySize = int.MaxValue;
