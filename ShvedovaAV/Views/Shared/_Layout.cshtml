@@ -27,7 +27,7 @@
                 }
                 @if (user is not null && user.IsAuthenticated)
                 {
-                    <a asp-action="profile" asp-controller="home"><button type="button" class="btn btn-outline-primary me-2 my-2">Профиль</button></a>
+                    <a asp-action="profile" asp-controller="profile"><button type="button" class="btn btn-outline-primary me-2 my-2">Профиль</button></a>
                     <a asp-action="logout" asp-controller="account"><button type="button" class="btn btn-outline-primary me-2 my-2">Выйти</button></a>  
                 }
                 else

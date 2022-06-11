@@ -50,7 +50,7 @@ namespace ShvedovaAV.Controllers
                 string textMessage = $"{user.Name}, Вы зарегистрировались на сайте shvedovaav.ru!\nЗаходите к нам почаще!";
                 //await emailService.SendEmailAsync("krskagent@mail.ru", "Регистрация", textMessage);
                 await HttpContext.SignInAsync(claimsPrincipal);
-                return RedirectToAction("Profile", "Home");
+                return RedirectToAction("Profile", "Profile");
             }
             return View(model);
         }
@@ -77,7 +77,7 @@ namespace ShvedovaAV.Controllers
                 var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
-                return RedirectToAction("Profile", "Home");
+                return RedirectToAction("Profile", "Profile");
             }
             ViewData["Message"] = "Неправильный логин или пароль!";
             return View(model);

@@ -1,0 +1,26 @@
+﻿@model ShvedovaAV.Models.User
+@{
+    ViewBag.Title = "Настройки";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            @if (Model.Sendmail == true)
+            {
+                <a asp-action="sendoff" asp-controller="profile" asp-route-id="@Model.Id" class="btn btn-outline-primary me-2 my-2">Отписаться</a>
+            }
+            else
+            {
+                <a asp-action="subscribe" asp-controller="profile" asp-route-id="@Model.Id" class="btn btn-outline-primary me-2 my-2">Подписаться</a>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <a asp-action="changepassword" asp-controller="profile" asp-route-id="@Model.Id" class="btn btn-outline-primary me-2 my-2">Сменить пароль</a>
+        </div>
+    </div>
+</div>
+
+

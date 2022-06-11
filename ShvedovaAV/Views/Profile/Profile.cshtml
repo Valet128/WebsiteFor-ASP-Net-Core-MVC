@@ -14,9 +14,10 @@
 }
 @if(role != null)
  {
+     
         if (role == "Admin")
         {
-            <h5>Администратор @name</h5>
+            <h5>Администратор @name</h5> 
                
                 <a asp-action="Products" asp-controller="Product"><input type="button" value="Курсы"/></a>
                 <a asp-action="Sliders" asp-controller="Slider"><input type="button" value="Слайдеры"/></a>
@@ -30,21 +31,28 @@
                 </ul>  
 
         }
-        else
+        else if(role == "User")
         {
             <h5>@name</h5>
                 <div class="row">Ваш телефон: @phone </div>
                 <div class="row">
-                <a asp-action="Content" asp-controller="Home" asp-route-id="@id">
+                <a asp-action="Content" asp-controller="Profile" asp-route-id="@id">
                 <input type="button" value="Доступный видеоматериал"/>
                 </a>    
                 </div>
                 <div class="row">
-                <a>
+                <a asp-action="Settings" asp-controller="Profile" asp-route-id="@id">
                 <input type="button" value="Настройки"/>
                 </a>
-                </div>
-        }
- }
+        </div>
+        <h4>@ViewBag.Message</h4>
+    }
+    else
+    {
+         <a asp-action="login" asp-controller="account"><button type="button" class="btn btn-outline-primary me-2 my-2">Войти</button></a>
+         <a asp-action="registration" asp-controller="account"><button type="button" class="btn btn-primary my-2">Регистрация</button></a>
+
+    }
+}
 
 
