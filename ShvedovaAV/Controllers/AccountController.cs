@@ -5,6 +5,7 @@ using ShvedovaAV.Services;
 using ShvedovaAV.ViewModels;
 using System.Security.Claims;
 
+
 namespace ShvedovaAV.Controllers
 {
     public class AccountController : Controller
@@ -25,15 +26,25 @@ namespace ShvedovaAV.Controllers
         [HttpPost]
         public async Task<IActionResult> Registration(RegistrationViewModel model)
         {
-            EmailService emailService = new EmailService();
+            if (model != null)
+            {
+                var email = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                if (email != null)
+                {
+                    ViewBag.Message = "Пользователь с таким Email уже существует!";
+                    return View(model);
+                }
+            }
             if (ModelState.IsValid)
             {
                 User user = new User { 
                     Name = model.Name,
                     Email = model.Email,
-                    Phone = "",
-                    Password = model.Password
+                    Phone = ""
                 };
+                string password = user.Salt.ToString() + model.Password;
+                var passwordHash = HashService.GetHash(password);
+                user.Password = passwordHash;
                 await db.Roles.ToListAsync();
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
@@ -47,8 +58,8 @@ namespace ShvedovaAV.Controllers
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                string textMessage = $"{user.Name}, Вы зарегистрировались на сайте shvedovaav.ru!\nЗаходите к нам почаще!";
-                //await emailService.SendEmailAsync("krskagent@mail.ru", "Регистрация", textMessage);
+                //string textMessage = $"{user.Name}, Вы зарегистрировались на сайте shvedovaav.ru!\nЗаходите к нам почаще!";
+                //await EmailService.SendEmailAsync("krskagent@mail.ru", "Регистрация", textMessage);
                 await HttpContext.SignInAsync(claimsPrincipal);
                 return RedirectToAction("Profile", "Profile");
             }
@@ -62,7 +73,14 @@ namespace ShvedovaAV.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(User model)
         {
-            User? user = db.Users.Include(r=> r.Role).FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+            User? salt = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (salt == null) 
+            {
+                ViewData["Message"] = "Неправильный логин или пароль!";
+                return View(model);
+            }
+            string password = salt.Salt.ToString() + model.Password;
+            User? user = await db.Users.Include(r=> r.Role).FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == HashService.GetHash(password));
             if (user != null)
             {
                 

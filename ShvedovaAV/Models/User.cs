@@ -10,6 +10,7 @@ namespace ShvedovaAV.Models
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
+        public Guid Salt { get; set; } = Guid.NewGuid();
         public string? Password { get; set; }
         public DateTime RegistrationDate { get; set; } = DateTime.Now;
         public bool Sendmail { get; set; } = true;

@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace ShvedovaAV.Properties.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "Admin, User")]
     public class ProfileController : Controller
     {
         ApplicationContext db;
@@ -81,13 +81,22 @@ namespace ShvedovaAV.Properties.Controllers
         {
             if (model != null)
             {
-                var user = await db.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync(u => u.Password == model.OldPassword);
+                User? salt = await db.Users.FirstOrDefaultAsync(u => u.Id == model.Id);
+                if (salt == null)
+                {
+                    ViewBag.Message = "Ошибка, обратитесь в тех.поддержку!";
+                    return View(model);
+                }
+                string password = salt.Salt.ToString() + model.OldPassword;
+                
+                var user = await db.Users.Where(u => u.Id == model.Id).FirstOrDefaultAsync(u => u.Password == HashService.GetHash(password));
                 if (user == null)
                 {
                     ViewBag.Message = "Неправильный пароль!";
                     return View(model);
                 }
-                user.Password = model.NewPassword;
+                string newPassword = salt.Salt.ToString() + model.NewPassword;
+                user.Password = HashService.GetHash(newPassword);
                 await db.SaveChangesAsync();
             }
             TempData["shortMessage"] = "Пароль успешно изменен!";

@@ -44,13 +44,13 @@ namespace ShvedovaAV.Models
                 new Role { Id = 2, Name = "User"}
                 );
             modelBuilder.Entity<User>().HasData(
-                 new User 
-                 { 
+                 new User
+                 {
                      Id = 1,
                      Name = "asdasd",
                      Email = "krskagent@mail.ru",
                      Phone = "89131743699",
-                     Password = "1",
+                     Password = HashService.GetHash("1"),
                      RoleId = 1,
                  },
                  new User
@@ -59,7 +59,7 @@ namespace ShvedovaAV.Models
                      Name = "wefwewef",
                      Email = "lexus747@mail.ru",
                      Phone = "8923423433499",
-                     Password = "1",
+                     Password = HashService.GetHash("1"),
                      RoleId = 2,
                  }
                 );

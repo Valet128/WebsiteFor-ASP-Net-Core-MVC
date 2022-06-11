@@ -28,7 +28,7 @@ namespace ShvedovaAV.Controllers
                     emails[i] = users[i].Email;
                 }
                 EmailService emailService = new EmailService();
-                await emailService.SendEmailAsync(emails, title, message);
+                await EmailService.SendEmailsAsync(emails, title, message);
                 ViewBag.Message = "Почта отправлена!";
                 return View();
             }

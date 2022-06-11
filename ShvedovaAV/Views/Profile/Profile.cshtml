@@ -19,15 +19,15 @@
         {
             <h5>Администратор @name</h5> 
                
-                <a asp-action="Products" asp-controller="Product"><input type="button" value="Курсы"/></a>
-                <a asp-action="Sliders" asp-controller="Slider"><input type="button" value="Слайдеры"/></a>
-                <a asp-action="Feedbacks" asp-controller="Feedback"><input type="button" value="Отзывы"/></a>
+                <a asp-action="Products" asp-controller="Product"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Курсы"/></a>
+                <a asp-action="Sliders" asp-controller="Slider"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Слайдеры"/></a>
+                <a asp-action="Feedbacks" asp-controller="Feedback"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Отзывы"/></a>
                 <br/> <br/>
                 
                <ul>  
                 <p>Пользователи</p>
-                    <li><a asp-action="Content" asp-controller="Content"><input type="button" value="Контент"/></a></li><br/>
-                    <li><a asp-action="SendMail" asp-controller="Sending"><input type="button" value="Рассылка"/></a></li>
+                    <li><a asp-action="Content" asp-controller="Content"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Контент"/></a></li><br/>
+                    <li><a asp-action="SendMail" asp-controller="Sending"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Рассылка"/></a></li>
                 </ul>  
 
         }
@@ -37,12 +37,12 @@
                 <div class="row">Ваш телефон: @phone </div>
                 <div class="row">
                 <a asp-action="Content" asp-controller="Profile" asp-route-id="@id">
-                <input type="button" value="Доступный видеоматериал"/>
+                <input class="btn btn-outline-primary me-2 my-2" type="button" value="Доступный видеоматериал"/>
                 </a>    
                 </div>
                 <div class="row">
                 <a asp-action="Settings" asp-controller="Profile" asp-route-id="@id">
-                <input type="button" value="Настройки"/>
+                <input class="btn btn-outline-primary me-2 my-2" type="button" value="Настройки"/>
                 </a>
         </div>
         <h4>@ViewBag.Message</h4>
