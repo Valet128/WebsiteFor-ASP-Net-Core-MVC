@@ -63,5 +63,10 @@ namespace ShvedovaAV.Properties.Controllers
         {
             return View(product);
         }
+        public IActionResult CookiesAccept()
+        {
+            HttpContext.Response.Cookies.Append("Guest", "Accepted");
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -6,11 +6,9 @@ namespace ShvedovaAV.ViewModels
     {
         public int Id { get; set; }
         [Required]
-        public string? Name { get; set; }
+        public string? AuthorName { get; set; }
         [Required]
-        public string? Description { get; set; }
-        [Required]
-        public int Price { get; set; }
+        public string? Text { get; set; }
         [Required]
         public string? Image { get; set; }
         public IFormFile? ImageFile { get; set; }

@@ -12,16 +12,6 @@
          <span asp-validation-for="Name"></span>
     </p>
     <p>
-        <label asp-for="Description">Описание</label><br />
-        <textarea asp-for="Description" style="height:300px;width:500px"></textarea>
-         <span asp-validation-for="Description"></span>
-    </p>
-     <p>
-        <label asp-for="Price">Цена</label><br />
-        <input asp-for="Price" />
-         <span asp-validation-for="Price"></span>
-    </p>
-        <p>
         <label asp-for="Image">Изображение</label><br />
         <input asp-for="Image" type="hidden"/>
         <img src="~/@Model.Image" width="240" height="130"/><br />

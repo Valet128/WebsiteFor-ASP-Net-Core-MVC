@@ -3,12 +3,12 @@
     ViewBag.Title = @Model.Name;
 }
 <table class="table">
-     <tr><th>Имя</th><th>Описание</th><th>Цена</th><th>Категория</th><th>Картинка</th></tr>
+     <tr><th>Имя</th><th>Описание</th><th>Цена</th><th>Дата и Время</th><th>Картинка</th></tr>
         <tr>
             <td>@Model.Name</td>
             <td>@Model.Description</td>
             <td>@Model.Price</td>
-            <td>@Model.Category</td>
+            <td>@Model.DateAndTime</td>
             <td><img src="~/@Model.Image" width="480" height="260"/></td>
            
         </tr>

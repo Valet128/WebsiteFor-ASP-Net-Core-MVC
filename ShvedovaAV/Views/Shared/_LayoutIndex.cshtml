@@ -1,5 +1,4 @@
 ﻿@using System.Security.Claims
-
 <!DOCTYPE html>
 
 <html>
@@ -15,18 +14,19 @@
 </head>
 
 <body>
+
     @{
         if (Context.Request.Cookies.ContainsKey("Guest"))
         {
             if (Context.Request.Cookies["Guest"] == "NotAccepted")
             { 
-                 <div class="text-center" style="margin: 0; height: auto; width: 100%; background-color: #00023d; color: #eee; position:fixed">
-                              На сайте используется сбор данных Cookies. 
-                              Чтобы ознакомиться пройдите по ссылке <a href="~/Home/Confidence">Политика конфиденциальности</a>. 
-                              Согласие на сбор данных <a asp-action="cookiesAccept" asp-controller="home" class="btn btn-primary me-2 my-2">Принять</a>
-                          
-                 </div>
-                 <div id="header_margin" style="margin: 0; height: 50px;  width: 100%"></div>
+               <div class="text-center" style="margin: 0; height: auto; width: 100%; background-color: #00023d; color: #eee; position:fixed">
+                            На сайте используется сбор данных Cookies. 
+                            Чтобы ознакомиться пройдите по ссылке <a href="~/Home/Confidence">Политика конфиденциальности</a>. 
+                            Согласие на сбор данных <a asp-action="cookiesAccept" asp-controller="home" class="btn btn-primary me-2 my-2">Принять</a>
+                       
+                        </div>
+                <div style="margin: 0; height: 50px; width: 100%"></div>
             }
             else{}
         }
@@ -34,21 +34,23 @@
         {
             Context.Response.Cookies.Append("Guest", "NotAccepted");
 
-                  <div class="text-center" style="margin: 0; height: auto; width: 100%; background-color: #00023d; color: #eee; position:fixed">
-                           На сайте используется сбор данных Cookies. 
-                           Чтобы ознакомиться пройдите по ссылке <a href="~/Home/Confidence">Политика конфиденциальности</a>. 
-                           Согласие на сбор данных <a asp-action="cookiesAccept" asp-controller="home" class="btn btn-primary me-2 my-2">Принять</a>
-                       
-                  </div>
-                  <div id="header_margin" style="margin: 0; height: 50px; width: 100%"></div>
+                   <div class="text-center" style="margin: 0; height: auto; width: 100%; background-color: #00023d; color: #eee; position:fixed">
+                            На сайте используется сбор данных Cookies. 
+                            Чтобы ознакомиться пройдите по ссылке <a href="~/Home/Confidence">Политика конфиденциальности</a>. 
+                            Согласие на сбор данных <a asp-action="cookiesAccept" asp-controller="home" class="btn btn-primary me-2 my-2">Принять</a>
+                        
+                        </div>
+                        <div style="margin: 0; height: 50px; width: 100%"></div>
         }
-        
     }
+
     <header class="container pt-3 d-flex justify-content-center">
         <div class="row d-flex justify-content-center">
             <ul class="nav flex-column flex-sm-row d-flex justify-content-center text-center">
                         <li><a href="/" class="nav-link px-2 link-dark">АШАШ</a></li>
-                        
+                        <li><a href="#courses" class="nav-link px-2 link-dark">КУРСЫ</a></li>
+                        <li><a href="#about" class="nav-link px-2 link-dark">О КОМПАНИИ</a></li>
+                        <li><a href="#feedbacks" class="nav-link px-2 link-dark">ОТЗЫВЫ</a></li>
                         <li><h4 class="px-5 py-1">8-909-65-258-65</h4></li>
                 @{
                 var user = Context.User.Identity;
@@ -77,17 +79,20 @@
         {
             if (role == "Admin")
             {
-                <div class="container d-flex justify-content-center">
-                <a asp-action="Sliders" asp-controller="Slider"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Слайдеры"/></a>
-                <a asp-action="Products" asp-controller="Product"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Курсы"/></a>
-                <a asp-action="Feedbacks" asp-controller="Feedback"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Отзывы"/></a>
-                <a asp-action="Content" asp-controller="Content"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Контент"/></a>
-                <a asp-action="SendMail" asp-controller="Sending"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Рассылка"/></a>
-                </div> 
+                            <div class="container d-flex justify-content-center">
+                            
+                            <a asp-action="Sliders" asp-controller="Slider"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Слайдеры"/></a>
+                            <a asp-action="Products" asp-controller="Product"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Курсы"/></a>
+                            <a asp-action="Feedbacks" asp-controller="Feedback"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Отзывы"/></a>
+                            <a asp-action="Content" asp-controller="Content"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Контент"/></a>
+                            <a asp-action="SendMail" asp-controller="Sending"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Рассылка"/></a>
+                             
+                            </div>
             }
         }
     } 
-        <div class="container">
+        
+    <div class="container">
         @RenderBody()
     </div>
     

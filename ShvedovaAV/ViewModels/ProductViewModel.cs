@@ -12,7 +12,7 @@ namespace ShvedovaAV.ViewModels
         [Required]
         public int Price { get; set; }
         [Required]
-        public string? Category { get; set; }
+        public DateTime DateAndTime { get; set; }
         public string? Image { get; set; }
         public IFormFile? ImageFile { get; set; }
     }

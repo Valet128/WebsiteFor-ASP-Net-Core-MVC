@@ -2,11 +2,13 @@
 @using ShvedovaAV.ViewModels
 @model MainPageViewModel
 @{
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
     ViewBag.Title = "АШАШ";
     List<Product> products = Model.Products;
     List<Slider>  sliders = Model.Sliders;
     List<Feedback>  feedbacks = Model.Feedbacks;
-    int count = 0;
+    int countInner = 0;
+    int countIndicators = 0;
 }
     
   
@@ -15,48 +17,40 @@
   <div class="container">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+        @foreach(var item in sliders)
+            {
+            if (countIndicators == 0)
+            {
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@countIndicators" class="active" aria-label="Slide + @countIndicators" aria-current="true"></button>
+            }
+            else
+            {
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="@countIndicators" aria-label="Slide + @countIndicators" class=""></button>
+            }
+            countIndicators++;
+        }
+     
     </div>
     <div class="carousel-inner">
         
             @foreach(var item in sliders)
             {
-            if (count == 0)
+            if (countInner == 0)
             {
                 <div class="carousel-item active">
                     <image src="@item.Image" class="img-fluid" style="width:100%;height:auto" />
-                    
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h1>@item.Name</h1>
-                            <p>@item.Description</p>
-                            <p><a class="btn btn-primary" href="#">Ознакомиться</a></p>
-                        </div>
-                    </div>
                 </div>
             }
             else
             {
                  <div class="carousel-item">
                     <image src="@item.Image"  class="img-fluid" style="width:100%;height:auto" />
-
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h1>@item.Name</h1>
-                            <p>@item.Description</p>
-                            <p><a class="btn btn-primary" href="#">Ознакомиться</a></p>
-                        </div>
-                    </div>
                 </div>
 
             }
-            count = 1;
+            countInner = 1;
         }
-          @*<div class="carousel-caption">  - положение кнопки по центру
-            <div class="carousel-caption text-end"> - положение кнопки справа
-          *@
+          
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -95,35 +89,32 @@
 
         <div class="container" id="about">
             <div class="row d-flex justify-content-center text-center">
-          <div class="col-12 col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">АШАШ <span class="text-muted">Описание сайта.</span></h2>
-            <p>Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта 
-
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта Описание сайта 
-                Описание сайта Описание сайта Описание сайта Описание сайта 
-            </p>
-          </div>
-                <div class="col-12 col-md-5" >
-                <image src="Files/Images/Description/description.jpg" class="img-fluid" style="height:auto;width:500px"/>
+                <div class="col-12 col-md-6">
+                <p> Анна Шведова - врач-психотерапевт.
+                Более 30 лет успешно занимается вопросами здорового образа жизни,
+                питания и психологии. Автор уникальных тренингов и курсов.
+                Ценнейшие и глубокие знания доносит легко и просто. 
+                </p>
                 </div>
-          </div>
-          </div>
+                <div class="col-12 col-md-6" >
+                <image src="Files/Images/Description/Mama.png" class="img-fluid" style="height:auto;width:500px"/>
+                </div>
+                <hr class="featurette-divider mt-3">
+                <div class="col-12 col-md-6" >
+                <image src="Files/Images/Description/Lusia.png" class="img-fluid" style="height:auto;width:500px"/>
+                </div>
+                <div class="col-12 col-md-6">
+                <p> Людмила Ушакова - директор Авторской Школы Анны Шведовой.
+                    Врач-терапевт. Организатор тренингов и курсов.   
+                </p>
+                </div>
+            </div>
+        </div>
 
         <hr class="featurette-divider">
 
    
-@*PRODUCT_ITEMS*@
+@*FEEDBACKS*@
   
 
    <div class="container py-5" id="feedbacks">
@@ -134,9 +125,9 @@
           <div class="col-12 col-md-4">
             <img src="@item.Image" width="140" height="140" style="border-radius:90px"/>
 
-            <h2 class="fw-normal">@item.Name</h2>
-            <p style="min-height:100px;">@item.Description</p>
-            <p><a class="btn btn-secondary" href="Product/Product/@item.Id">Подробнее...</a></p>
+            <h2 class="fw-normal">@item.AuthorName</h2>
+            <p style="min-height:100px;">@item.Text</p>
+            <p><a class="btn btn-secondary" href="Feedback/Feedback/@item.Id">Подробнее...</a></p>
      
          </div>
     }

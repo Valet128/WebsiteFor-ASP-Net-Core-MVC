@@ -33,7 +33,7 @@ namespace ShvedovaAV.Controllers
                 {
                     string fileExtension = Path.GetExtension(model.ImageFile.FileName);
                     string wwwRootPath = appEnvironment.WebRootPath;
-                    string fileName = model.Name + "_" + DateTime.Now.ToString("yymmssfff") + fileExtension;
+                    string fileName = model.AuthorName + "_" + DateTime.Now.ToString("yymmssfff") + fileExtension;
 
                     string path = Path.Combine(wwwRootPath + "/Files/Images/Feedback/", fileName);
                     using (FileStream fileStream = new FileStream(path, FileMode.Create))
@@ -43,9 +43,8 @@ namespace ShvedovaAV.Controllers
 
                     Feedback Feedback = new Feedback
                     {
-                        Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
+                        AuthorName = model.AuthorName,
+                        Text = model.Text,
                         Image = "Files/Images/Feedback/" + fileName
                     };
 
@@ -55,9 +54,8 @@ namespace ShvedovaAV.Controllers
                 {
                     Feedback Feedback = new Feedback
                     {
-                        Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
+                        AuthorName = model.AuthorName,
+                        Text = model.Text,
                         Image = "Image"
                     };
 
@@ -96,9 +94,8 @@ namespace ShvedovaAV.Controllers
                     FeedbackViewModel viewModel = new() 
                     {
                         Id = Feedback.Id,
-                        Name = Feedback.Name,
-                        Description = Feedback.Description,
-                        Price = Feedback.Price,
+                        AuthorName = Feedback.AuthorName,
+                        Text = Feedback.Text,
                         Image = Feedback.Image,
                         ImageFile = Feedback.ImageFile
                     };
@@ -119,7 +116,7 @@ namespace ShvedovaAV.Controllers
                 }
                 string fileExtension = Path.GetExtension(Feedback.ImageFile.FileName);
                 string wwwRootPath = appEnvironment.WebRootPath;
-                string fileName = Feedback.Name + "_" + DateTime.Now.ToString("yymmssfff") + fileExtension;
+                string fileName = Feedback.AuthorName + "_" + DateTime.Now.ToString("yymmssfff") + fileExtension;
 
                 string path = Path.Combine(wwwRootPath + "/Files/Images/Feedback/", fileName);
                 using (FileStream fileStream = new FileStream(path, FileMode.Create))

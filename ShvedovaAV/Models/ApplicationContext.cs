@@ -47,20 +47,21 @@ namespace ShvedovaAV.Models
                  new User
                  {
                      Id = 1,
-                     Name = "asdasd",
+                     Name = "Великий",
                      Email = "krskagent@mail.ru",
                      Phone = "89131743699",
-                     Password = HashService.GetHash("1"),
+                     Password = "1",
                      RoleId = 1,
                  },
                  new User
                  {
                      Id = 2,
-                     Name = "wefwewef",
+                     Name = "Васька",
                      Email = "lexus747@mail.ru",
                      Phone = "8923423433499",
-                     Password = HashService.GetHash("1"),
+                     Password = "1",
                      RoleId = 2,
+                     Sendmail = false
                  }
                 );
         }

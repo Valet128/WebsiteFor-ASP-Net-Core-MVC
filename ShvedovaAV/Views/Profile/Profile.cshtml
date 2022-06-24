@@ -18,18 +18,6 @@
         if (role == "Admin")
         {
             <h5>Администратор @name</h5> 
-               
-                <a asp-action="Products" asp-controller="Product"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Курсы"/></a>
-                <a asp-action="Sliders" asp-controller="Slider"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Слайдеры"/></a>
-                <a asp-action="Feedbacks" asp-controller="Feedback"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Отзывы"/></a>
-                <br/> <br/>
-                
-               <ul>  
-                <p>Пользователи</p>
-                    <li><a asp-action="Content" asp-controller="Content"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Контент"/></a></li><br/>
-                    <li><a asp-action="SendMail" asp-controller="Sending"><input class="btn btn-outline-primary me-2 my-2" type="button" value="Рассылка"/></a></li>
-                </ul>  
-
         }
         else if(role == "User")
         {
@@ -46,13 +34,13 @@
                 </a>
         </div>
         <h4>@ViewBag.Message</h4>
-    }
-    else
-    {
+        }
+        else
+        {
          <a asp-action="login" asp-controller="account"><button type="button" class="btn btn-outline-primary me-2 my-2">Войти</button></a>
          <a asp-action="registration" asp-controller="account"><button type="button" class="btn btn-primary my-2">Регистрация</button></a>
 
-    }
+        }
 }
 
 

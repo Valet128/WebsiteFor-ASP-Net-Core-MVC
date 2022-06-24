@@ -44,7 +44,7 @@ namespace ShvedovaAV.Controllers
                         Name = model.Name,
                         Description = model.Description,
                         Price = model.Price,
-                        Category = model.Category,
+                        DateAndTime = model.DateAndTime,
                         Image = "Files/Images/Product/" + fileName
                     };
 
@@ -57,7 +57,7 @@ namespace ShvedovaAV.Controllers
                         Name = model.Name,
                         Description = model.Description,
                         Price = model.Price,
-                        Category = model.Category,
+                        DateAndTime = model.DateAndTime,
                         Image = "Image"
                     };
 
@@ -99,7 +99,7 @@ namespace ShvedovaAV.Controllers
                         Name = product.Name,
                         Description = product.Description,
                         Price = product.Price,
-                        Category = product.Category,
+                        DateAndTime = product.DateAndTime,
                         Image = product.Image,
                         ImageFile = product.ImageFile
                     };

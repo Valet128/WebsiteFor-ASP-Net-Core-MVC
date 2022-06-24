@@ -13,6 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 {
     options.MaxRequestBodySize = int.MaxValue;
 });*/
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "Guest";
+    options.IdleTimeout = TimeSpan.FromDays(5000);
+});
+
 builder.Services.AddSingleton<CountService>();
 builder.Services.Configure<KestrelServerOptions>(options =>
 {
@@ -33,6 +40,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();

@@ -44,8 +44,6 @@ namespace ShvedovaAV.Controllers
                     Slider Slider = new Slider
                     {
                         Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
                         Image = "Files/Images/Slider/" + fileName
                     };
 
@@ -56,8 +54,6 @@ namespace ShvedovaAV.Controllers
                     Slider Slider = new Slider
                     {
                         Name = model.Name,
-                        Description = model.Description,
-                        Price = model.Price,
                         Image = "Image"
                     };
 
@@ -97,8 +93,6 @@ namespace ShvedovaAV.Controllers
                     {
                         Id = Slider.Id,
                         Name = Slider.Name,
-                        Description = Slider.Description,
-                        Price = Slider.Price,
                         Image = Slider.Image,
                         ImageFile = Slider.ImageFile
                     };

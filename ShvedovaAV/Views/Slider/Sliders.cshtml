@@ -4,13 +4,11 @@
 }
 
 <table class="table">
-     <tr><th>Название</th><th>Описание</th><th>Цена</th><th>Картинка</th></tr>
+     <tr><th>Название</th><th>Картинка</th></tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>@item.Price</td>
             <td><img src="~/@item.Image" width="240" height="130"></img></td>
             <td><a asp-action="EditSlider" asp-route-id="@item.Id"><input type="button"  value="Редактировать"/></a></td>
             <td>
